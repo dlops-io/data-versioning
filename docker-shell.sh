@@ -6,7 +6,7 @@ export BASE_DIR=$(pwd)
 export SECRETS_DIR=$(pwd)/../secrets/
 export GCS_BUCKET_NAME="ahh-cheese-app-data-versioning"
 export GCP_PROJECT="ac215-434717"
-export GCP_ZONE="us-central1-a"
+export GCP_ZONE="us"
 export GOOGLE_APPLICATION_CREDENTIALS="/secrets/data-service-account.json"
 
 
