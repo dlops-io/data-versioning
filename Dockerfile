@@ -16,6 +16,10 @@ ENV PYENV_SHELL=/bin/bash
 # Tell Python to disable buffering so we don't lose any logs.
 ENV PYTHONUNBUFFERED=1
 
+# Tell uv to copy packages from the wheel into the site-packages
+ENV UV_LINK_MODE=copy
+ENV UV_PROJECT_ENVIRONMENT=/.venv
+
 RUN set -ex; \
     for i in $(seq 1 8); do mkdir -p "/usr/share/man/man${i}"; done && \
     apt-get update && \
@@ -34,10 +38,12 @@ RUN set -ex; \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
     pip install --no-cache-dir --upgrade pip && \
-    pip install pipenv && \
-    useradd -ms /bin/bash app -d /home/app -u 1000 -p "$(openssl passwd -1 Passw0rd)" && \
+    pip install uv && \
+    useradd -ms /bin/bash app -d /home/app -u 1000 && \
     mkdir -p /app && \
-    chown app:app /app
+    chown app:app /app && \
+    mkdir -p /.venv && \
+    chown app:app /.venv
 
 RUN mkdir -p /mnt/gcs_data && chown app:app /mnt/gcs_data
 
@@ -46,15 +52,14 @@ RUN mkdir -p /mnt/gcs_data && chown app:app /mnt/gcs_data
 #USER app # Keep the user as root since we need for mounting
 WORKDIR /app
 
+# Copy dependency files first for better layer caching
+COPY --chown=app:app pyproject.toml uv.lock* ./
 
-# Install python packages
-ADD --chown=app:app Pipfile Pipfile.lock /app/
+# Install dependencies in a separate layer for better caching
+RUN uv sync --frozen
 
-RUN pipenv sync
-
-# Add the rest of the source code. This is done last so we don't invalidate all
-# layers when we change a line of code.
-ADD --chown=app:app . /app
+# Copy the rest of the source code
+COPY --chown=app:app . ./
 
 # Entry point
 #ENTRYPOINT ["pipenv","shell"]
