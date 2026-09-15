@@ -1,4 +1,4 @@
-# Tutorial (T7):  Data Versioning Demo
+# Tutorial:  Data Versioning Demo
 
 In this tutorial, we will cover data versioning techniques using the cheese app dataset. Everything will be run inside containers using Docker.
 
