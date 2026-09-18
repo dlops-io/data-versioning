@@ -4,6 +4,7 @@ echo "Container is running!!!"
 echo "Architecture: $(uname -m)"
 echo "Python version: $(python --version)"
 echo "UV version: $(uv --version)"
+echo $GCS_BUCKET_NAME
 
 gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
 mkdir -p /mnt/gcs_bucket

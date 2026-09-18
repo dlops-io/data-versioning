@@ -33,7 +33,7 @@ RUN set -ex; \
     echo "deb http://packages.cloud.google.com/apt gcsfuse-bionic main" > /etc/apt/sources.list.d/gcsfuse.list && \ 
     apt-get update && \
     apt-get install -y  gcsfuse && \
-    apt-get install -y --no-install-recommends google-cloud-sdk && \
+    apt-get install -y --no-install-recommends google-cloud-cli && \
     apt-get install -y libnss3 libcurl4 && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
