@@ -147,9 +147,7 @@ parent-folder/
 
 ## Set up a GCP service account
 
-1. Open the [GCP Console](https://console.cloud.google.com/home/dashboard).
-2. Search for **Service Accounts**, or navigate to **IAM & Admin → Service Accounts**.
-3. Create a new service account named:
+3. Create a new service account in the GCP console named:
 
    ```text
    data-service-account
@@ -261,7 +259,7 @@ DVC and Git have different jobs:
 | DVC | Large dataset files |
 | GCS | The remote location where DVC stores dataset versions |
 
-## Create the first dataset version: `dataset_v20`
+## Create the first dataset version
 
 ### Initialize DVC
 
@@ -320,7 +318,7 @@ git commit -m "Track initial cheese dataset with DVC"
 git tag -a dataset_v20 -m "First version of cheese dataset"
 git push --atomic origin main dataset_v20
 ```
-
+> ‼️ **Disclaimer** The name-tag of the dataset might not be 'dataset_v20' for you as this tag is taken. Try with different numbers and see which might work for you for e.g. dataset_v21, dataset_v22, dataset_v23, etc. 
 > 💡 **Why tag the commit?** The Git tag `dataset_v20` gives this exact dataset state a memorable name. Later, you can return to that version instead of guessing which data was used.
 
 ## View `dataset_v20` in Colab
@@ -370,7 +368,7 @@ git commit -m "Add images to cheese dataset"
 git tag -a dataset_v21 -m "Updated cheese dataset with additional images"
 git push --atomic origin main dataset_v21
 ```
-
+> ‼️ **Disclaimer** Again, he name-tag of the dataset might not be 'dataset_v21' for you as this tag is taken. Try with different numbers and see which might work for you for e.g. dataset_v22, dataset_v23, dataset_v24, etc. 
 > ⚠️ **Note:** You only need to run `git remote add origin ...` once, when you first create your repository. Do not add it again here.
 
 You now have two dataset versions:
