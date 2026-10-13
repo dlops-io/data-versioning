@@ -78,7 +78,7 @@ Four walkthroughs:
 Clone the `data-versioning-ac215` branch:
 
 ```bash
-git clone -b data-versioning-ac215 git@github.com:dlops-io/data-versioning.git
+git clone -b main git@github.com:dlops-io/data-versioning.git
 ```
 
 > 💡 **Tip:** This command uses SSH. You need to add your public SSH key to GitHub first. Alternatively, you can clone with HTTPS.
@@ -88,7 +88,7 @@ git clone -b data-versioning-ac215 git@github.com:dlops-io/data-versioning.git
 Run this in your terminal:
 
 ```bash
-git clone -b data-versioning-ac215 https://github.com/dlops-io/data-versioning.git
+git clone -b main https://github.com/dlops-io/data-versioning.git
 ```
 
 Then enter the folder:
