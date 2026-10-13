@@ -130,6 +130,12 @@ Your repository URL should look like this:
 ```text
 git@github.com:YOUR_GITHUB_USERNAME/data-versioning.git
 ```
+Or, if you are using HTTPS, use this instead:
+
+```bash
+git remote set-url origin https://github.com/raima2001/data-versioning.git
+```
+in the next incoming steps.
 
 Connect your local project to the new repository and push it:
 
