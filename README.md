@@ -83,6 +83,22 @@ git clone -b data-versioning-ac215 git@github.com:dlops-io/data-versioning.git
 
 > 💡 **Tip:** This command uses SSH. You need to add your public SSH key to GitHub first. Alternatively, you can clone with HTTPS.
 
+### Clone the repository using HTTPS
+
+Run this in your terminal:
+
+```bash
+git clone -b data-versioning-ac215 https://github.com/dlops-io/data-versioning.git
+```
+
+Then enter the folder:
+
+```bash
+cd data-versioning
+```
+
+This uses **HTTPS instead of SSH**, so you don’t need an SSH key.
+
 Move into the project folder:
 
 ```bash
